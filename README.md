@@ -4,9 +4,9 @@ This project is a Social Media based around connecting small in-person groups. I
 To run the docker build:
 Terminal into project folder using GitBash or another Unix terminal
 
-'''source up.sh''' 
-('''. up.sh''' or '''docker compose up -d''' are also valid)
+```source up.sh``` 
+(```. up.sh``` or ```docker compose up -d``` are also valid)
 
 To close the docker build:
 
-'''docker compose down'''
+```docker compose down```
