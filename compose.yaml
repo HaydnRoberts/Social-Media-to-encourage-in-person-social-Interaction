@@ -1,0 +1,19 @@
+name: Social-Media-to-encourage-in-person-social-Interaction
+services:
+  frontend:
+    image: nginx
+    volumes:
+      - ./app-frontend:/usr/share/nginx/html:ro
+    ports:
+     - "81:80"
+
+  backend:
+    image: node:22.9.0
+    volumes:
+      - ./app-backend:/usr/src/app
+    ports:
+      - "82:9000"
+    working_dir: /usr/src/app
+    command: sh -c "
+      chmod +x run.sh &&
+      ./run.sh"
