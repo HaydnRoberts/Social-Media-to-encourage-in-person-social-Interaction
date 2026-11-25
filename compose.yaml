@@ -8,13 +8,14 @@ services:
      - "81:80"
 
   backend:
-    image: node:22.9.0
+    image: node:22.22.2
     volumes:
       - ./app-backend:/usr/src/app
     ports:
       - "82:9000"
     working_dir: /usr/src/app
     command: sh -c "
+      npm install &&
       chmod +x run.sh &&
       ./run.sh"
     links:

@@ -1,24 +1,34 @@
+
 window.onload = function() {
     let request = new XMLHttpRequest();
-    
     request.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status == 200) {
+        if (this.readyState === 4) {
             let elem = document.getElementById("divUsers");
-            let users = JSON.parse(this.responseText);
-            
-
-            let text = "";
-            let len = users.length;
-            for(let i = 0; i < len; i++){
-                if (i != 0){
-                    text += ", ";
+            if (this.status === 200) {
+                let users = JSON.parse(this.responseText);
+                elem.innerHTML = "";
+                if (users.length === 0) {
+                    elem.textContent = "No users found.";
+                    return;
                 }
-                text += users[i].surname;
+                let list = document.createElement("ul");
+
+                for (let i = 0; i < users.length; i++) {
+
+                    let listItem = document.createElement("li");
+
+                    listItem.textContent =
+                        users[i].forename + " " + users[i].surname;
+
+                    list.appendChild(listItem);
+                }
+                elem.appendChild(list);
+            } else {
+                elem.textContent = "Error loading users.";
+                console.log("Request failed:", this.status);
             }
-            elem.innerHTML = text;
         }
     };
-    
     request.open("GET", "http://localhost:82/", true);
     request.send();
-}
+};
