@@ -11,3 +11,15 @@ Terminal into project folder using GitBash or another Unix terminal
 To close the docker build:
 
 ```docker compose down```
+
+To interact with the port 27017 database:
+enter the terminal for the projects database container
+
+Enter ```mongodb://root:example@localhost:27017/```
+
+To interact with the port 83 database:
+enter the GitBash terminal and enter:
+```mongodb://root:example@localhost:83/```
+
+Or you can interact with this database using MongoDB Compass with:
+```mongodb://root:*****@localhost:83/?authSource=admin```
