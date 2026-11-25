@@ -17,3 +17,16 @@ services:
     command: sh -c "
       chmod +x run.sh &&
       ./run.sh"
+    links:
+      - database
+
+  database:
+    image: mongo:8.2.2
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d:ro
+    ports:
+      - 83:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      
